@@ -1,0 +1,48 @@
+<div ng-controller="ScreencastsCtrl">
+  <div id="screencast-list-container" >
+    <ul>
+      <li ng-repeat="screencast in screencasts"
+          ng-click="showScreencast(screencast, $index)">
+        <h3 ng-class="{active: $index == selectedRow}">{{screencast.title}}
+          <small>({{screencast.duration}})</small></h3>
+      </li>
+    </ul>
+  </div>
+
+  <div id="screencast-view-container" ng-show="selectedScreencast">
+    <h2>{{selectedScreencast.title}}</h2>
+    <p>{{selectedScreencast.summary}}</p>
+    <p>{{selectedScreencast.video_url}}</p>
+    <div flow-player="" id="player"></div>
+    <video html5-video='{{ selectedScreencast.video_url }}'
+        autoplay='true' controls='true' class="embed-responsive-item">
+    </video>
+    <p>
+      Published at {{selectedScreencast.published_at | date: 'mediumDate'}}
+      - <a ng-href="{{selectedScreencast.link}}">{{selectedScreencast.link}}</a>
+    </p>
+
+    <ul>
+      <li ng-repeat="cmt in comments" class="comment"> 
+        <h4>{{cmt.name}}</h4> 
+        <p> {{cmt.content}} </p>
+    </li>
+    </ul>
+
+    <div class="well">
+      <form role="form" ame="userForm" novalidate ng-submit="create_comment()">
+          <div class="form-group">
+            <label for="Name"> Name</label>
+            <input type="text" class="form-control  " placeholder="Name" ng-model="comment.name">
+          </div>
+          <div class="form-group">
+              <textarea class="form-control" rows="3" ng-model="comment.content"></textarea>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary" ng-click="submitted=true">Submit</button>
+          </div>
+      </form>
+    </div>
+    <p> {{comment}}</p>
+  </div>
+</div>

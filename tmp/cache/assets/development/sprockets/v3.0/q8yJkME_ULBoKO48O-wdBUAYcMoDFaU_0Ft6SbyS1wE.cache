@@ -1,0 +1,9 @@
+I"²(function() {
+  App.controller('ScreencastsCtrl', [
+    '$scope', function($scope, Screencast) {
+      return $scope.screencast = Screencast.query();
+    }
+  ]);
+
+}).call(this);
+:ET

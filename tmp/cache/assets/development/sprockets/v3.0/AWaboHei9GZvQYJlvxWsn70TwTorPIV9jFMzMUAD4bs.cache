@@ -1,0 +1,9 @@
+I"¼(function() {
+  angular.moduel('AngularCasts').controller('ScreencastsCtrl', [
+    '$scope', function($scope) {
+      return $scope.message = "Angular Rocks!";
+    }
+  ]);
+
+}).call(this);
+:ET

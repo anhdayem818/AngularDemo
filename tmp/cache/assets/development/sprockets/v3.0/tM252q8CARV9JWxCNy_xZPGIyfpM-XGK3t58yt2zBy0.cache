@@ -1,0 +1,9 @@
+I"€(function() {
+  App.directive('flowPlayer', function() {
+    return {
+      template: "asdaksjdh "
+    };
+  });
+
+}).call(this);
+:ET

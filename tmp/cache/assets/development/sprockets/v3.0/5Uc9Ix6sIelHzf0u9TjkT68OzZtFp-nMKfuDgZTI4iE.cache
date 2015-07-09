@@ -1,0 +1,7 @@
+I"g(function() {
+  var App;
+
+  App = angular.module('AngularCasts', ['ngResource']);
+
+}).call(this);
+:ET

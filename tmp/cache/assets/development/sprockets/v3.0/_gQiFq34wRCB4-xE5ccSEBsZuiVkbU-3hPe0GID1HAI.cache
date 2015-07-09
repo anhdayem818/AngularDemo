@@ -1,0 +1,5 @@
+I"|(function() {
+  App.controller('ScreencastsCtrl', ['$scope', $scope > ($scope.message = "Angular	")]);
+
+}).call(this);
+:ET

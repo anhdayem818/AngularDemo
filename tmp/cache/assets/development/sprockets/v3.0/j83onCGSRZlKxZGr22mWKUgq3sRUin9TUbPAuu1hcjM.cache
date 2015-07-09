@@ -1,0 +1,9 @@
+I"š(function() {
+  App.controller('ScreencastsCtrl', [
+    '$scope', function($scope) {
+      return $scope.message = "Angular";
+    }
+  ]);
+
+}).call(this);
+:ET
