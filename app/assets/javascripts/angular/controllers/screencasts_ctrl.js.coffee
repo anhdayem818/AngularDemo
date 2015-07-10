@@ -9,22 +9,29 @@ App.controller 'ScreencastsCtrl', ['$scope', 'Screencast', 'Comment', '$location
     $scope.selectedScreencast = $scope.screencasts[0]
     $scope.selectedRow = 0
     $scope.comments = $scope.selectedScreencast.comments
+    $scope.load_video()
 
   # Set the selected screencast to the one which was clicked
   $scope.showScreencast = (screencast, row) ->
     $scope.selectedScreencast = screencast
     $scope.selectedRow = row
     $scope.comments = $scope.selectedScreencast.comments
+    $scope.load_video()
+
+  $scope.load_video = ->
+    myVideo = document.getElementsByTagName('video')[0];
+    myVideo.src = $scope.selectedScreencast.video_url
+    myVideo.load()
 
   #Create comment 
   $scope.create_comment = ->
-    console.log($scope.comment)
-    Comment.create id: $scope.selectedScreencast.id,
-      comment: $scope.comment,
-      -> 
-        $location.path('/')
-      (error) ->
-        console.log(error)
-    
+    p = Comment.create id: $scope.selectedScreencast.id,
+          comment: $scope.comment,
+          -> 
+            $location.path('/')
+          (error) ->
+            console.log(error)
+    $scope.comments.push(p)
+  
 ]
 

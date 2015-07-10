@@ -14,19 +14,13 @@
     <p>{{selectedScreencast.summary}}</p>
     <p>{{selectedScreencast.video_url}}</p>
     <div flow-player="" id="player"></div>
-    <video html5-video='{{ selectedScreencast.video_url }}'
-        autoplay='true' controls='true' class="embed-responsive-item">
-    </video>
-    <p>
-      Published at {{selectedScreencast.published_at | date: 'mediumDate'}}
-      - <a ng-href="{{selectedScreencast.link}}">{{selectedScreencast.link}}</a>
-    </p>
+    <video controls >    </video>
 
     <ul>
       <li ng-repeat="cmt in comments" class="comment"> 
         <h4>{{cmt.name}}</h4> 
         <p> {{cmt.content}} </p>
-    </li>
+      </li>
     </ul>
 
     <div class="well">
@@ -43,6 +37,5 @@
           </div>
       </form>
     </div>
-    <p> {{comment}}</p>
   </div>
 </div>
