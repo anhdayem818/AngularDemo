@@ -1,9 +1,0 @@
-I"¨(function() {
-  window.App.controller('ScreencastsCtrl', [
-    '$scope', function($scope) {
-      return $scope.message = "Angular Rocks!";
-    }
-  ]);
-
-}).call(this);
-:ET
