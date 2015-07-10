@@ -1,5 +1,6 @@
 App.controller 'ScreencastsCtrl', ['$scope', 'Screencast', 'Comment', '$location',($scope, Screencast, Comment, $location) ->
   # Attributes accessible on the view
+  $scope.screencasts = []
   $scope.selectedScreencast = null
   $scope.selectedRow        = null
   $scope.comment = null
@@ -23,15 +24,26 @@ App.controller 'ScreencastsCtrl', ['$scope', 'Screencast', 'Comment', '$location
     myVideo.src = $scope.selectedScreencast.video_url
     myVideo.load()
 
+  #loadMore
+  $scope.loadMore = (e)->
+    $scope.count = $scope.screencasts.length
+    Screencast.query(
+      start: $scope.count
+      desiredScreencast: 10,
+      (data) ->
+        if data.length > 0
+          $scope.screencasts =  $scope.screencasts.concat(data)
+    )
   #Create comment 
   $scope.create_comment = ->
     p = Comment.create id: $scope.selectedScreencast.id,
           comment: $scope.comment,
-          -> 
-            $location.path('/')
+          (data) -> 
+            if data.status == 'ok'
+              $scope.comments.push(data.comment)
+              $scope.comment.content = null
+              $scope.submitted = false
           (error) ->
             console.log(error)
-    $scope.comments.push(p)
-  
 ]
 

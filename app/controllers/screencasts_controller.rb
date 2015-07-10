@@ -1,6 +1,8 @@
 class ScreencastsController < ApplicationController
 	def index
-		render json: Screencast.all
+		desiredScreencast = params[:desiredScreencast].present? ? params[:desiredScreencast] : 10
+		start = params[:start].present? ? params[:start] : 0
+		render json: Screencast.limit(desiredScreencast).offset(start)
 	end
 
 	def show
