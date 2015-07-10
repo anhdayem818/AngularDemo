@@ -85,6 +85,7 @@ header {
   overflow: auto; 
 }
 .headerView{
+    z-index: 99;
     position: fixed;
     margin-top: -5px;
     margin-left: -26px;
@@ -113,6 +114,28 @@ ul{
   }
 }
 
-webkit-scrollbar-track {
+-webkit-scrollbar-track {
   background: red;
+}
+
+h1,h2,h3{
+  font-family: 'Open Sans Condensed', sans-serif;
+  text-transform: uppercase;
+  font-weight: 700 !important;
+  
+}
+h1{
+  font-size :36px;
+  padding-bottom: 30px;
+}
+
+.article-day{
+  color: #cccccc;
+  margin-bottom: 5px;
+  font-style: italic;
+  font-size: 24px;
+}
+video{
+  border: 1px solid #cecece;
+  padding-bottom: 20px;
 }
